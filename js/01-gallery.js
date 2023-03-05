@@ -1,52 +1,97 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-// //1. Створення і рендер розмітки на підставі масиву даних galleryItems і наданого шаблону елемента галереї.
-// const listEl = document.querySelector('.gallery');
-// const makeGalleryEl = ({preview, original, description})  =>
-// `<li class='gallery-item'>
-// <img src='${preview}' alt='${description}'>
-// </li>`
 
-// const markup = images.map((data) => makeGalleryEl(data)).join('');
-// //console.log(markup);
-// listEl.insertAdjacentHTML('beforeend', markup);
+const bacicLightbox = window.bacicLightbox;
 
-// console.log(galleryItems);
+const galleryList = document.querySelector('.gallery');
 
-const galleryContainer = document.querySelector('.gallery');
-function createGalleryCardsMarkup(items) {
+const galleryMarkup = hendleGalleryMarkup(galleryItems);
+
+function hendleGalleryMarkup(items) {
   return items
     .map(({ preview, original, description }) => {
-      return `
-    <div class="gallery__item">
-        <a class="gallery__link" href="${original}">
-        <img
-            class="gallery__image"
-            src="${preview}"
-            data-source="${original}"
-            alt="${description}" />
-        </a>
-    </div>
-    `;
-    })
-    .join('');
+        return `
+      <div class="gallery__item">
+          <a class="gallery__link" href="${original}">
+          <img
+              class="gallery__image"
+              src="${preview}"
+              data-source="${original}"
+              alt="${description}" />
+          </a>
+      </div>
+      `;
+      })
+      .join('');
 }
-const cardsMarkup = createGalleryCardsMarkup(galleryItems);
-galleryContainer.insertAdjacentHTML('beforeend', cardsMarkup);
-
-galleryContainer.addEventListener(click, hendleGalleryClick);
+galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
+galleryList.addEventListener('click', hendleGalleryClick);
 
 function hendleGalleryClick(e) {
   e.preventDefault();
-  if (e.targett.nodeName !== 'IMG') {
+  if (e.target.nodeName !== 'IMG') {
     return;
   }
 
-  const modalImg = e.targett.dataset.source;
+  const modalImg = e.target.dataset.source;
   console.log(modalImg);
 
   const instance = bacicLightbox.create(
     `<img src="${modalImg}" 
-    width="800" height="600">`)
-    instance.show()
+    width="800" height="600">`
+  );
+  instance.show();
 }
+
+// const galleryContainer = document.querySelector('.gallery');
+// function createGalleryCardsMarkup(items) {
+//   return items
+//     .map(({ preview, original, description }) => {
+//       return `
+//     <div class="gallery__item">
+//         <a class="gallery__link" href="${original}">
+//         <img
+//             class="gallery__image"
+//             src="${preview}"
+//             data-source="${original}"
+//             alt="${description}" />
+//         </a>
+//     </div>
+//     `;
+//     })
+//     .join('');
+// }
+// const cardsMarkup = createGalleryCardsMarkup(galleryItems);
+// galleryContainer.insertAdjacentHTML('beforeend', cardsMarkup);
+
+
+// (({ preview, original, description }) => {
+//           return `
+//         <div class="gallery__item">
+//             <a class="gallery__link" href="${original}">
+//             <img
+//                 class="gallery__image"
+//                 src="${preview}"
+//                 data-source="${original}"
+//                 alt="${description}" />
+//             </a>
+//         </div>
+//         `;
+//         })
+//         .join('');
+
+
+        // (
+        //     item =>
+        //       `<div class="gallery__item">
+        //           <a class="gallery__link" href="${item.original}">
+        //           <img
+        //               class="gallery__image"
+        //               src="${item.preview}"
+        //               data-source="${item.original}"
+        //               alt="${item.description}" />
+        //           </a>
+        //       </div>
+        //       `
+        //   )
+        //   .join('');
