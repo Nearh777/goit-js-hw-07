@@ -27,6 +27,8 @@ function hendleGalleryMarkup(items) {
 galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
 galleryList.addEventListener('click', hendleGalleryClick);
 
+
+
 function hendleGalleryClick(event) {
   event.preventDefault();
   if (event.target.nodeName !== 'IMG') {
