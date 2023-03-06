@@ -25,20 +25,7 @@ function hendleGalleryMarkup(items) {
     .join('');
 }
 galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
-galleryList.addEventListener('click', hendleGalleryClick);
 
-
-
-function hendleGalleryClick(event) {
-  event.preventDefault();
-  if (event.target.nodeName !== 'IMG') {
-    return;
-  }
-
-  let href = (event.target.closest('a').getAttribute('href'));
-  return href;
-
-}
 let gallery = new SimpleLightbox('.gallery a',{
     captionSelector: 'img',
     captionsData: 'alt',
@@ -47,12 +34,7 @@ let gallery = new SimpleLightbox('.gallery a',{
     scrollZoom: false,
    });
 
-gallery.on('show.simplelightbox', function () {
-});
 
-gallery.on('error.simplelightbox', function (event) {
-  console.log(event);
-});
 
 
 

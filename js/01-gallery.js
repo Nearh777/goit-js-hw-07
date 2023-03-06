@@ -28,9 +28,9 @@ galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
 galleryList.addEventListener('click', hendleGalleryClick);
 
 
-
 function hendleGalleryClick(event) {
   event.preventDefault();
+  
   if (event.target.nodeName !== 'IMG') {
     return;
   }
@@ -38,11 +38,24 @@ function hendleGalleryClick(event) {
   const modalImg = event.target.dataset.source;
   console.log(modalImg);
 
+  
   const instance = basicLightbox.create(
     `<img src="${modalImg}" 
     width="800" height="600">`
   );
-  instance.show();
+  window.addEventListener('keydown', event => {
+    instance.show();
+  });
+      
+      
+    
+
+  // window.removeEventListener('keydown', event => {
+  //   instance.close();
+  //   });
+ 
+
+  
 }
 
 
