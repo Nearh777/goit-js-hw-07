@@ -35,17 +35,23 @@ function hendleGalleryClick(event) {
     return;
   }
 
-  let href = (e.target.closest('a').getAttribute('href'));
+  let href = (event.target.closest('a').getAttribute('href'));
   return href;
 
 }
-let gallery = new SimpleLightbox('.gallery a');
+let gallery = new SimpleLightbox('.gallery a',{
+    captionSelector: 'img',
+    captionsData: 'alt',
+    captionPosition: 'bottom',
+    captionDelay: 250,
+    scrollZoom: false,
+   });
 
 gallery.on('show.simplelightbox', function () {
 });
 
-gallery.on('error.simplelightbox', function (e) {
-  console.log(e);
+gallery.on('error.simplelightbox', function (event) {
+  console.log(event);
 });
 
 
