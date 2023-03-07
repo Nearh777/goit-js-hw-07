@@ -31,6 +31,7 @@ galleryList.addEventListener('click', hendleGalleryClick);
 
 function hendleGalleryClick(event) {
   event.preventDefault();
+  event.addEventListener('keydown');
   
   if (event.target.nodeName !== 'IMG') {
     return;
