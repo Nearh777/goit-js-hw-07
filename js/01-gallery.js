@@ -43,10 +43,7 @@ function hendleGalleryClick(event) {
     `<img src="${modalImg}" 
     width="800" height="600">`
   );
-  window.addEventListener('keydown', event => {
     
-  });
-  
   instance.show();
       
       
