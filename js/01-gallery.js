@@ -50,7 +50,7 @@ function hendleGalleryClick(event) {
   
   instance.show();     
    
-  modalImg.addEventListener('keydown', event => {
+  window.addEventListener('keydown', event => {
     instance.show();
     });
 
