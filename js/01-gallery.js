@@ -52,7 +52,7 @@ function hendleGalleryClick(event) {
     
 
   window.addEventListener('keydown', event => {
-    instance.show();
+    instance.close();
     });
  
 
