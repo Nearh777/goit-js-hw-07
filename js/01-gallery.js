@@ -26,14 +26,14 @@ function hendleGalleryMarkup(items) {
 }
 galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
 galleryList.addEventListener('click', hendleGalleryClick);
-galleryList.addEventListener('keydown', hendleGalleryClick);
+
 
 
 
 
 function hendleGalleryClick(event) {
   event.preventDefault();
-  // event.addEventListener('keydown');
+  
   
   if (event.target.nodeName !== 'IMG') {
     return;
@@ -49,7 +49,10 @@ function hendleGalleryClick(event) {
   );
   
   instance.show();     
-    
+   
+  modalImg.addEventListener('keydown', event => {
+    instance.show();
+    });
 
   window.addEventListener('keydown', event => {
     instance.close();
