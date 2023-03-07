@@ -26,6 +26,8 @@ function hendleGalleryMarkup(items) {
 }
 galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
 galleryList.addEventListener('click', hendleGalleryClick);
+galleryList.addEventListener('keydown', hendleGalleryClick);
+
 
 
 
@@ -45,7 +47,7 @@ function hendleGalleryClick(event) {
     `<img src="${modalImg}" 
     width="800" height="600">`
   );
-  instance.addEventListener('keydown');
+  
   instance.show();
       
       
