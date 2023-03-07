@@ -31,7 +31,7 @@ galleryList.addEventListener('click', hendleGalleryClick);
 
 function hendleGalleryClick(event) {
   event.preventDefault();
-  event.addEventListener('keydown');
+  // event.addEventListener('keydown');
   
   if (event.target.nodeName !== 'IMG') {
     return;
@@ -45,7 +45,7 @@ function hendleGalleryClick(event) {
     `<img src="${modalImg}" 
     width="800" height="600">`
   );
-    
+  instance.addEventListener('keydown');
   instance.show();
       
       
