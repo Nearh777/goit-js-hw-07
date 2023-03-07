@@ -26,6 +26,7 @@ function hendleGalleryMarkup(items) {
 }
 galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
 galleryList.addEventListener('click', hendleGalleryClick);
+galleryList.addEventListener('keydown', hendleGalleryClick);
 
 
 function hendleGalleryClick(event) {
