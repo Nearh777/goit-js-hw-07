@@ -48,9 +48,7 @@ function hendleGalleryClick(event) {
     width="800" height="600">`
   );
   
-  instance.show();
-      
-      
+  instance.show();     
     
 
   window.addEventListener('keydown', event => {
