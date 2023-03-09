@@ -26,6 +26,11 @@ function hendleGalleryMarkup(items) {
 }
 galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
 galleryList.addEventListener('click', hendleGalleryClick);
+galleryList.removeEventListener('keydown', e => {
+
+});
+
+
 
 function hendleGalleryClick(event) {
   event.preventDefault();
@@ -41,12 +46,13 @@ function hendleGalleryClick(event) {
     instance.show();
   });
 
-  removeEventListener('keydown' , e => {
-    if (e.target === modalImg){
-      instance.close();
-    }
+  // removeEventListener('keydown' , e => {
+  //   if (e.code === "Escape") {
+  //     instance.close();
+  // }
     
-  })
+    
+  // })
 
   const instance = basicLightbox.create(
     `<img src="${modalImg}" 
