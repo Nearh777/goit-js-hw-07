@@ -27,26 +27,20 @@ function hendleGalleryMarkup(items) {
 galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
 galleryList.addEventListener('click', hendleGalleryClick);
 
+
+
 function hendleGalleryClick(event) {
   event.preventDefault();
 
   if (event.target.nodeName !== 'IMG') {
     return;
   }
+  
+
+ 
 
   const modalImg = event.target.dataset.source;
-  console.log(modalImg);
-
-  addEventListener('keydown', e => {
-    instance.show();
-  });
-
-  removeEventListener('keydown' , e => {
-    if (e.target === modalImg){
-      instance.close();
-    }
-    
-  })
+  console.log(modalImg);  
 
   const instance = basicLightbox.create(
     `<img src="${modalImg}" 
@@ -54,6 +48,24 @@ function hendleGalleryClick(event) {
   );
 
   instance.show();
+
+
+  addEventListener('keydown', e => {
+    instance.show();
+  });
+
+  //removeEventListener('keydown', function(){
+
+  //});
+
+  //removeEventListener('keydown', e => {
+  //  instance.close();
+  //});
  
+  //removeEventListener('keydown' , e => {
+  //  if (e.target.classList === e.target.classList('.basicLightbox')){
+  //  instance.close();
+  //  }
+  //})
   
 }
