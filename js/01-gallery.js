@@ -47,7 +47,7 @@ function hendleGalleryClick(event) {
   });
   instance.show(); 
 
-  addEventListener('keydown', e => {
+  removeEventListener('keydown', e => {
     instance.close();
   });
 
