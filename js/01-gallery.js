@@ -27,31 +27,39 @@ function hendleGalleryMarkup(items) {
 galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
 galleryList.addEventListener('click', hendleGalleryClick);
 
+
 function hendleGalleryClick(event) {
   event.preventDefault();
 
   if (event.target.nodeName !== 'IMG') {
     return;
   }
-
+  
   const modalImg = event.target.dataset.source;
 
   console.log(modalImg);
-
-  const instance = basicLightbox.create(
-    `<img src="${modalImg}" 
-    width="800" height="600">`
-  );
   addEventListener('keydown', e => {
     instance.show();
   });
+  const instance = basicLightbox.create(
+    `<img src="${modalImg}" 
+    width="800" height="600">`
+    
+  );
+  
   instance.show(); 
 
+
+  // addEventListener('keydown', e => {
+  //   instance.show();
+  // });
   removeEventListener('keydown', e => {
-    instance.close();
+    if ('_source'){
+      instance.close();
+    }
   });
 
-  
+   
 }
 
 
