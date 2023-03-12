@@ -27,39 +27,36 @@ function hendleGalleryMarkup(items) {
 galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
 galleryList.addEventListener('click', hendleGalleryClick);
 
-
 function hendleGalleryClick(event) {
   event.preventDefault();
 
   if (event.target.nodeName !== 'IMG') {
     return;
   }
-  
+
   const modalImg = event.target.dataset.source;
 
   console.log(modalImg);
-  addEventListener('keydown', e => {
-    instance.show();
-  });
+
   const instance = basicLightbox.create(
-    `<img src="${modalImg}" 
-    width="800" height="600">`
-    
-  );
-  
-  instance.show(); 
+    `<img src="${modalImg}"
+    width="800" height="600">`,
+    {
+      onShow: () => {
+        window.addEventListener('keydown', hendlecloseImage);
+      },
+      onClose: () => {
+        window.removeEventListener('keydown', hendlecloseImage);
+      },
+    });
+  instance.show();
 
-
-  // addEventListener('keydown', e => {
-  //   instance.show();
-  // });
-  removeEventListener('keydown', e => {
-    if ('_source'){
-      instance.close();
+  function hendlecloseImage(event) {
+    if (event.code === 'Escape') {
+        instance.close();
     }
-  });
-
-   
+  };
 }
+
 
 
